@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>OceanwindsRoyalapartment</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900|Rubik:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+
+    <link rel="stylesheet" href="fonts/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <style>
+      .alert {
+            display: none;
+            margin-top: 20px;
+        }
+        .price-display {
+            background-color: #e9f7fe;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 4px solid #007bff;
+        }
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        .price-total {
+            font-weight: bold;
+            font-size: 1.2em;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+        .price-highlight {
+            color: #28a745;
+            font-weight: bold;
+        }
+        .currency {
+            font-weight: bold;
+        }
+    </style>
+    <header role="banner">
+     
+      <nav class="navbar navbar-expand-md navbar-dark bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">Oceanwinds Royal<sup>Apartments</sup></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse navbar-light" id="navbarsExample05">
+            <ul class="navbar-nav ml-auto pl-lg-5 pl-0">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <!--<li class="nav-item">
+                 <a class="nav-link active" href="blog.html">Blog</a>
+               </li>-->
+               <li class="nav-item">
+                <a class="nav-link" href="rooms.html">Apartments</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+              </li>
+
+               <li class="nav-item cta">
+                <a class="nav-link active" href="rooms.html"><span>Book Now</span></a>
+              </li>
+            </ul>
+            
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- END header -->
+
+    <section class="site-hero site-hero-innerpage overlay" data-stellar-background-ratio="0.5" style="background-image: url(images/South-africa\ 3.jpg);">
+      <div class="container">
+        <div class="row align-items-center site-hero-inner justify-content-center">
+          <div class="col-md-12 text-center">
+
+            <div class="mb-5 element-animate">
+              <h1>Reservation</h1>
+              <h6 style="color: white;">Discover Luxury Apartments For VIPs.</h6>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END section -->
+
+    <section class="site-section">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-6">
+                  <h2 class="mb-5">Reservation Form</h2>
+                  <div id="successAlert" class="alert alert-success" role="alert">
+                      Your reservation has been submitted successfully! We'll contact you shortly.
+                  </div>
+                  <div id="errorAlert" class="alert alert-danger" role="alert">
+                      Please fill in all required fields correctly.
+                  </div>
+                  <form id="reservationForm">
+                      <div class="row">
+                          <div class="col-md-12 form-group">
+                              <label for="full_name">Full Name *</label>
+                              <input type="text" id="full_name" name="full_name" class="form-control" required>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-sm-6 form-group">
+                              <label for="arrival_date">Arrival Date *</label>
+                              <div style="position: relative;">
+                                  <span class="fa fa-calendar icon" style="position: absolute; right: 10px; top: 10px;"></span>
+                                  <input type='date' class="form-control" id='arrival_date' name="arrival_date" required>
+                              </div>
+                          </div>
+                          <div class="col-sm-6 form-group">
+                              <label for="departure_date">Departure Date *</label>
+                              <div style="position: relative;">
+                                  <span class="fa fa-calendar icon" style="position: absolute; right: 10px; top: 10px;"></span>
+                                  <input type='date' class="form-control" id='departure_date' name="departure_date" required>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-6 form-group">
+                              <label for="apartment">Apartment *</label>
+                              <select name="apartment" id="apartment" class="form-control" required>
+                                  <option value="">Select an apartment</option>
+                                  <option value="SOUTH-AFRICA APARTMENT" data-price="100000">SOUTH-AFRICA APARTMENT - ₦100,000/night</option>
+                                  <!--<option value="ITALY APARTMENT" data-price="70000">ITALY APARTMENT - ₦70,000/night</option>
+                                  <option value="FRANCE APARTMENT" data-price="70000">FRANCE APARTMENT - ₦70,000/night</option>-->
+                              </select>
+                          </div>
+                          <div class="col-md-6 form-group">
+                              <label for="guests">Guests *</label>
+                              <select name="guests" id="guests" class="form-control" required>
+                                  <option value="">Select number of guests</option>
+                                  <option value="1">1 Guest</option>
+                                  <option value="2">2 Guests</option>
+                                  <option value="3">3 Guests</option>
+                                  <option value="4">4 Guests</option>
+                                  <option value="5+">5+ Guests</option>
+                              </select>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-12 form-group">
+                              <label for="email">Email *</label>
+                              <input type="email" id="email" name="email" class="form-control" required>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-12 form-group">
+                              <label for="contact">Contact Number *</label>
+                              <input type="tel" id="contact" name="contact" class="form-control" required>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-12 form-group">
+                              <label for="message">Write a Note</label>
+                              <textarea name="message" id="message" class="form-control" cols="30" rows="8"></textarea>
+                          </div>
+                      </div>
+                      
+                      <!-- Price Calculation Display -->
+                      <div id="priceDisplay" class="price-display hidden">
+                          <h5>Booking Summary</h5>
+                          <div class="price-item">
+                              <span>Apartment:</span>
+                              <span id="apartmentName">-</span>
+                          </div>
+                          <div class="price-item">
+                              <span>Price per night:</span>
+                              <span id="pricePerNight" class="currency">₦0</span>
+                          </div>
+                          <div class="price-item">
+                              <span>Number of nights:</span>
+                              <span id="nightsCount">0</span>
+                          </div>
+                          <div class="price-item">
+                              <span>Subtotal:</span>
+                              <span id="subtotal" class="currency">₦0</span>
+                          </div>
+                          <div class="price-item">
+                              <span>Service fee (0%):</span>
+                              <span id="serviceFee" class="currency">₦0</span>
+                          </div>
+                          <div class="price-item price-total">
+                              <span>Total:</span>
+                              <span id="totalPrice" class="currency price-highlight">₦0</span>
+                          </div>
+                      </div>
+                      
+                      <div class="row">
+                          <div class="col-md-6 form-group">
+                              <button type="submit" class="btn btn-primary">Reserve Now</button>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+              <div class="col-md-1"></div>
+              <div class="col-md-5">
+                  <h3 class="mb-5">Featured Apartment</h3>
+                  <div class="media d-block room mb-0">
+                      <figure style="position: relative;">
+                          <img src="images/South-africa 1.jpg" alt="Canada Apartment" class="img-fluid">
+                          <div class="overlap-text">
+                              <span>
+                                  Featured Apartment 
+                                  <span class="fa fa-star"></span>
+                                  <span class="fa fa-star"></span>
+                                  <span class="fa fa-star"></span>
+                              </span>
+                          </div>
+                      </figure>
+                      <div class="media-body">
+                          <h3 class="mt-0"><a href="#">SOUTH-AFRICA APARTMENT</a></h3>
+                          <ul class="room-specs">
+                              <li><span class="fa fa-group"></span> 2+ Guests</li>
+                              <li><span class="fa fa-arrows"></span> 22 ft <sup>2</sup></li>
+                          </ul>
+                          <p>Luxurious one-room apartment with modern amenities, located in the heart of the city. Perfect for couples or solo travelers.</p>
+                          <p><strong>Features:</strong> Free WiFi, Kitchenette, Air Conditioning</p>
+                          <p><strong>Price:</strong> <span class="price-highlight">₦100,000/night</span></p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+
+    <!-- END section -->
+
+
+   
+   
+
+    <section class="section-cover" data-stellar-background-ratio="0.5" style="background-image: url(images/South-africa\ 2.jpg);">
+      <div class="container">
+        <div class="row justify-content-center align-items-center intro">
+          <div class="col-md-9 text-center element-animate">
+            <h2>Relax and Enjoy your Holiday</h2>
+            <p class="lead mb-5"></p>
+            <!--<div class="btn-play-wrap"><a href="https://vimeo.com/channels/staffpicks/93951774" class="btn-play popup-vimeo "><span class="ion-ios-play"></span></a></div>-->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END section -->
+   
+    <footer class="site-footer">
+        <div class="container">
+          <div class="row mb-5">
+            <div class="col-md-4">
+              <h3>Phone Support</h3>
+              <p class="lead"><a href="tel://">08088110323, 080592744114</a></p>
+            </div>
+            <div class="col-md-4">
+              <h3>Connect With Us</h3>
+              <p>
+                <a href="https://www.facebook.com/profile.php?id=61576018552292" class="pl-0 p-3"><span class="fa fa-facebook"></span></a>
+                <a href="#" class="p-3"><span class="fa fa-twitter"></span></a>
+                <a href="https://www.instagram.com/ocean.winds_apartments?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="p-3"><span class="fa fa-instagram"></span></a>
+                <!--<a href="#" class="p-3"><span class="fa fa-vimeo"></span></a>
+                <a href="#" class="p-3"><span class="fa fa-youtube-play"></span></a>-->
+              </p>
+            </div>
+            <div class="col-md-4">
+              <h3>Connect With Us</h3>
+              <p>oceanwindstfze@gmail.com</p>
+              <address>Block 1 plot 6 by Mma Giwa Rd, Federal Housing Estate, Beside Bakor Medical Center, Calabar.</address>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-md-7 text-center">
+              &copy;
+              Copyright <script>document.write(new Date().getFullYear());</script> by <a href="#" target="_blank">OceanwindsRoyalapartment</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!-- END footer -->
+  
+    
+    <!-- loader -->
+    <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div>
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery-migrate-3.0.0.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/magnific-popup-options.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+
+    <script>
+      // Apartment pricing data (₦70,000 per night for all apartments)
+      const apartmentPrices = {
+          "SOUTH-AFRICA APARTMENT": 100000,
+      };
+
+      // Service fee percentage (10%)
+      const SERVICE_FEE_PERCENTAGE = 0.0;
+
+      // DOM elements
+      const arrivalDateInput = document.getElementById('arrival_date');
+      const departureDateInput = document.getElementById('departure_date');
+      const apartmentSelect = document.getElementById('apartment');
+      const priceDisplay = document.getElementById('priceDisplay');
+      const apartmentNameElement = document.getElementById('apartmentName');
+      const pricePerNightElement = document.getElementById('pricePerNight');
+      const nightsCountElement = document.getElementById('nightsCount');
+      const subtotalElement = document.getElementById('subtotal');
+      const serviceFeeElement = document.getElementById('serviceFee');
+      const totalPriceElement = document.getElementById('totalPrice');
+
+      // Format currency in Nigerian Naira
+      function formatCurrency(amount) {
+          return '₦' + amount.toLocaleString('en-NG');
+      }
+
+      // Set minimum date for arrival to today
+      const today = new Date().toISOString().split('T')[0];
+      arrivalDateInput.min = today;
+
+      // Event listeners for price calculation
+      arrivalDateInput.addEventListener('change', calculatePrice);
+      departureDateInput.addEventListener('change', calculatePrice);
+      apartmentSelect.addEventListener('change', calculatePrice);
+
+      // Calculate price function
+      function calculatePrice() {
+          const arrivalDate = new Date(arrivalDateInput.value);
+          const departureDate = new Date(departureDateInput.value);
+          const apartment = apartmentSelect.value;
+          
+          // Check if all required fields are filled
+          if (!arrivalDateInput.value || !departureDateInput.value || !apartment) {
+              priceDisplay.classList.add('hidden');
+              return;
+          }
+          
+          // Check if departure date is after arrival date
+          if (departureDate <= arrivalDate) {
+              priceDisplay.classList.add('hidden');
+              return;
+          }
+          
+          // Calculate number of nights
+          const timeDifference = departureDate.getTime() - arrivalDate.getTime();
+          const nights = Math.ceil(timeDifference / (1000 * 3600 * 24));
+          
+          // Get apartment price
+          const pricePerNight = apartmentPrices[apartment];
+          
+          // Calculate costs
+          const subtotal = pricePerNight * nights;
+          const serviceFee = subtotal * SERVICE_FEE_PERCENTAGE; // 10% service fee
+          const total = subtotal + serviceFee;
+          
+          // Update display
+          apartmentNameElement.textContent = apartment;
+          pricePerNightElement.textContent = formatCurrency(pricePerNight);
+          nightsCountElement.textContent = nights;
+          subtotalElement.textContent = formatCurrency(subtotal);
+          serviceFeeElement.textContent = formatCurrency(serviceFee);
+          totalPriceElement.textContent = formatCurrency(total);
+          
+          // Show price display
+          priceDisplay.classList.remove('hidden');
+      }
+
+      // Form submission
+      document.getElementById('reservationForm').addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Validate form
+          if (!this.checkValidity()) {
+              document.getElementById('errorAlert').style.display = 'block';
+              document.getElementById('successAlert').style.display = 'none';
+              return;
+          }
+          
+          // Get form data
+          const formData = new FormData(this);
+          const data = Object.fromEntries(formData);
+          
+          // Calculate price details for email
+          const arrivalDate = new Date(data.arrival_date);
+          const departureDate = new Date(data.departure_date);
+          const timeDifference = departureDate.getTime() - arrivalDate.getTime();
+          const nights = Math.ceil(timeDifference / (1000 * 3600 * 24));
+          const pricePerNight = apartmentPrices[data.apartment];
+          const subtotal = pricePerNight * nights;
+          const serviceFee = subtotal * SERVICE_FEE_PERCENTAGE;
+          const total = subtotal + serviceFee;
+          
+          // Create email content
+          const subject = `Reservation Request - ${data.apartment}`;
+          const body = `
+Reservation Details:
+
+Full Name: ${data.full_name}
+Arrival Date: ${data.arrival_date}
+Departure Date: ${data.departure_date}
+Apartment: ${data.apartment}
+Number of Guests: ${data.guests}
+Email: ${data.email}
+Contact: ${data.contact}
+Message: ${data.message || 'No message provided'}
+
+Booking Summary:
+- Apartment: ${data.apartment}
+- Price per night: ${formatCurrency(pricePerNight)}
+- Number of nights: ${nights}
+- Subtotal: ${formatCurrency(subtotal)}
+- Service fee (10%): ${formatCurrency(serviceFee)}
+- Total: ${formatCurrency(total)}
+
+Thank you for your reservation request. We will contact you shortly to confirm your booking.
+          `;
+          
+          // Create mailto link
+          const mailtoLink = `mailto:oceanwindstfze.reservations@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          
+          // Open email client
+          window.location.href = mailtoLink;
+          
+          // Show success message
+          document.getElementById('successAlert').style.display = 'block';
+          document.getElementById('errorAlert').style.display = 'none';
+          
+          // Reset form
+          this.reset();
+          priceDisplay.classList.add('hidden');
+      });
+      
+      // Set minimum date for departure to arrival date
+      arrivalDateInput.addEventListener('change', function() {
+          departureDateInput.min = this.value;
+      });
+  </script>
+
+    
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
