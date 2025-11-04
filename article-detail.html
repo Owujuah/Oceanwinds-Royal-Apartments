@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article - NewsHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900|Rubik:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+
+    <link rel="stylesheet" href="fonts/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+
+        :root {
+            --primary-color: #1a73e8;
+            --secondary-color: #34a853;
+            --accent-color: #ea4335;
+            --dark-color: #202124;
+            --light-color: #f8f9fa;
+            --gray-color: #5f6368;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+       
+        /* Article Detail Styles */
+        .article-detail {
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin: 40px 0;
+            overflow: hidden;
+        }
+
+        .article-hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .article-content {
+            padding: 40px;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .article-category {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .article-date {
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            line-height: 1.3;
+            color: var(--dark-color);
+        }
+
+        .article-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .author-info h4 {
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+
+        .author-info p {
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+
+        .article-body {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--dark-color);
+        }
+
+        .article-body p {
+            margin-bottom: 20px;
+        }
+
+        .article-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: #f8f9fa;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--gray-color);
+        }
+
+        .action-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            font-size: 1.2rem;
+            color: var(--gray-color);
+        }
+
+        .error {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--accent-color);
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+            margin-top: 80px;
+        }
+
+        .back-button:hover {
+            background: #1557b0;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .article-content {
+                padding: 20px;
+            }
+
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-hero-image {
+                height: 300px;
+            }
+
+            .article-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .article-actions {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .article-title {
+                font-size: 1.8rem;
+            }
+
+            .article-hero-image {
+                height: 250px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header role="banner">
+     
+        <nav class="navbar navbar-expand-md navbar-dark bg-light">
+          <div class="container">
+            <a class="navbar-brand" href="index.html">Oceanwinds Royal<sup>Apartments</sup></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+  
+            <div class="collapse navbar-collapse navbar-light" id="navbarsExample05">
+              <ul class="navbar-nav ml-auto pl-lg-5 pl-0">
+                <li class="nav-item">
+                  <a class="nav-link active" href="index.html">Home</a>
+                </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="articles-page.html">Blog</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="rooms.html">Apartments</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="contact.php">Contact</a>
+                </li>
+  
+                 <li class="nav-item cta">
+                  <a class="nav-link" href="rooms.html"><span>Book Now</span></a>
+                </li>
+              </ul>
+              
+            </div>
+          </div>
+        </nav>
+      </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <a href="articles-page.html" class="back-button">
+            <i class="fas fa-arrow-left"></i>
+            Back to Articles
+        </a>
+
+        <div id="articleContainer">
+            <div class="loading">
+                <i class="fas fa-spinner fa-spin"></i> Loading article...
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+          <div class="row mb-5">
+            <div class="col-md-4">
+              <h3>Phone Support</h3>
+              <p class="lead"><a href="tel://">07068506527</a></p>
+            </div>
+            <div class="col-md-4">
+              <h3>Connect With Us</h3>
+              <p>
+                <a href="https://www.facebook.com/profile.php?id=61576018552292" class="pl-0 p-3"><span class="fa fa-facebook"></span></a>
+                <!--<a href="#" class="p-3"><span class="fa fa-twitter"></span></a>-->
+                <a href="https://www.instagram.com/ocean.winds_apartments?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="p-3"><span class="fa fa-instagram"></span></a>
+                <!--<a href="#" class="p-3"><span class="fa fa-vimeo"></span></a>
+                <a href="#" class="p-3"><span class="fa fa-youtube-play"></span></a>-->
+              </p>
+            </div>
+            <div class="col-md-4">
+              <h3>Connect With Us</h3>
+              <p>oceanwindstfze@gmail.com</p>
+              <address>Block 1 plot 6 by Mma Giwa Rd, Federal Housing Estate, Beside Bakor Medical Clinic, Calabar.</address>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-md-7 text-center">
+              &copy;
+              Copyright <script>document.write(new Date().getFullYear());</script> by <a href="#" target="_blank">Oceanwindsroyalapartments</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!-- END footer -->
+
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCGW_T8O3bOhCFgabacKwfXPHDQHjPOwwE",
+            authDomain: "oceanwindsroyalapartment.firebaseapp.com",
+            projectId: "oceanwindsroyalapartment",
+            storageBucket: "oceanwindsroyalapartment.firebasestorage.app",
+            messagingSenderId: "402432791417",
+            appId: "1:402432791417:web:14dcaa0251e07525a455a8",
+            measurementId: "G-FLVGYSB847"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // DOM Elements
+        const articleContainer = document.getElementById('articleContainer');
+
+        //Format date to readable text
+        function formatDate(timestamp) {
+            if (!timestamp) return 'Recently';
+            
+            const date = timestamp.toDate();
+            
+            const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
+                            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            
+            const month = monthNames[date.getMonth()];
+            const day = String(date.getDate()).padStart(2, '');
+            const year = date.getFullYear();
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            
+            return `${day+'rd'}-${month}-${year} ${hours}:${minutes}`;
+        }
+
+        // Get author initials for avatar
+        function getAuthorInitials(authorName) {
+            return authorName
+                .split(' ')
+                .map(word => word[0])
+                .join('')
+                .toUpperCase()
+                .substring(0, 2);
+        }
+
+        // Load and display article
+        function loadArticle(articleId) {
+            db.collection('articles').doc(articleId).get()
+                .then((doc) => {
+                    if (doc.exists) {
+                        const article = doc.data();
+                        displayArticle(article);
+                    } else {
+                        showError('Article not found');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error loading article:', error);
+                    showError('Error loading article: ' + error.message);
+                });
+        }
+
+        // Display article content
+        function displayArticle(article) {
+            const authorInitials = getAuthorInitials(article.authorName);
+            
+            articleContainer.innerHTML = `
+                <article class="article-detail">
+                    <img src="${article.imageUrl}" alt="${article.title}" class="article-hero-image">
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">${article.category}</span>
+                            <span class="article-date">
+                                <i class="far fa-clock"></i> ${formatDate(article.createdAt)}
+                            </span>
+                        </div>
+                        
+                        <h1 style="text-transform:uppercase;" class="article-title">${article.title}</h1>
+                        
+                        <div class="article-author">
+                            <div class="author-avatar">${authorInitials}</div>
+                            <div class="author-info">
+                                <h4 style="text-transform:uppercase;">${article.authorName}</h4>
+                                <p>Published on ${formatDate(article.createdAt)}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="article-body">
+                            ${article.content.split('\n').map(paragraph => 
+                                paragraph.trim() ? `<p>${paragraph}</p>` : ''
+                            ).join('')}
+                        </div>
+                        
+                        <div class="article-actions">
+                            <button class="action-btn" onclick="shareArticle()">
+                                <i class="fas fa-share"></i> Share
+                            </button>
+                            <button class="action-btn" onclick="printArticle()">
+                                <i class="fas fa-print"></i> Print
+                            </button>
+                            
+                        </div>
+                    </div>
+                </article>
+            `;
+
+            // Update page title
+            document.title = `${article.title} - NewsHub`;
+        }
+
+        // Show error message
+        function showError(message) {
+            articleContainer.innerHTML = `
+                <div class="error">
+                    <i class="fas fa-exclamation-triangle fa-2x"></i>
+                    <h2>Oops! Something went wrong</h2>
+                    <p>${message}</p>
+                    <a href="articles-page.html" class="btn btn-primary" style="margin-top: 20px;">Back to Articles</a>
+                </div>
+            `;
+        }
+
+        // Share article function
+        function shareArticle() {
+            if (navigator.share) {
+                navigator.share({
+                    title: document.title,
+                    text: 'Check out this article on NewsHub',
+                    url: window.location.href,
+                })
+                .catch(console.error);
+            } else {
+                // Fallback: copy to clipboard
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    alert('Article link copied to clipboard!');
+                });
+            }
+        }
+
+        // Print article function
+        function printArticle() {
+            window.print();
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            const articleId = sessionStorage.getItem('currentArticleId');
+            
+            if (articleId) {
+                loadArticle(articleId);
+            } else {
+                showError('No article selected');
+            }
+        });
+
+        // Update URL with article ID for sharing
+        function updateURL(articleId) {
+            const newUrl = `${window.location.pathname}?id=${articleId}`;
+            window.history.replaceState({}, '', newUrl);
+        }
+    </script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery-migrate-3.0.0.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/magnific-popup-options.js"></script>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
