@@ -40,6 +40,7 @@
 
         /* Header Styles */
        
+       
         /* Article Detail Styles */
         .article-detail {
             background: white;
@@ -192,12 +193,16 @@
             transform: translateY(-2px);
         }
 
+
+
         /* Responsive Design */
+        @media (min-width: 770px){
+            header{
+                background: rgba(0, 0, 0, 0.4) !important;
+        }
+        }
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 15px;
-            }
+           
 
             .article-content {
                 padding: 20px;
@@ -275,6 +280,8 @@
 
     <!-- Main Content -->
     <main class="container">
+        <br>
+        <br>
         <a href="articles-page.html" class="back-button">
             <i class="fas fa-arrow-left"></i>
             Back to Articles
